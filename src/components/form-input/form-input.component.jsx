@@ -1,5 +1,4 @@
 import React from 'react'
-import SignIn from '../sign-in/sign-in.component'
 import './form-input.styles.scss'
 
 const FormInput=({handleChange,label,...otherProps})=>(

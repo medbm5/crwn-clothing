@@ -6,6 +6,8 @@ import ShopPage from './pages/shop/shop.component'
 import Header from './components/header/header.component'
 import SignInAndSignUpPAge from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component'
 import {auth , createUSerProfileDocument} from './firebase/firebase.utils'
+import {connect} from 'react-redux'
+import {setCurrentUser} from  './redux/user/user.action'
 
 class App extends React.Component {
   constructor(){
@@ -44,7 +46,7 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <Header currentUser={this.state.currentUser}/>
+        <Header/>
         <Switch>
         <Route exact path='/' component={Homepage}/>
         <Route exact path='/shop' component={ShopPage}/>
@@ -55,5 +57,8 @@ class App extends React.Component {
     );
   }
 }
+const mapDispatcToProps=dispatch=>({
+   setCurrent 
+})
 
-export default App;
+export default connect(null,)(App);

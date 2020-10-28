@@ -10,31 +10,27 @@ import {connect} from 'react-redux'
 import {setCurrentUser} from  './redux/user/user.action'
 
 class App extends React.Component {
-  constructor(){
-    super()
-
-    this.state={
-      currentUser:null
-    }
-  }
+ 
   unsubscribeFromAuth=null
   componentDidMount(){
+
+    const {setCurrentUser}=this.props
+
     this.unsubscribeFromAuth=auth.onAuthStateChanged(async userAuth=>{
       if(userAuth){
         const userRef=await createUSerProfileDocument(userAuth)
         
         userRef.onSnapshot(snapshot=>{
-          this.setState({
-            currentUser:{
+          setCurrentUser({
               id:snapshot.id,
               ...snapshot.data()
-            }
+          
           })
         })
       
       
       }
-        this.setState({currentUser:userAuth})
+        setCurrentUser({userAuth})
       
     })
   }
@@ -58,7 +54,7 @@ class App extends React.Component {
   }
 }
 const mapDispatcToProps=dispatch=>({
-   setCurrent 
+   setCurrentUser: user=>dispatch(setCurrentUser(user))
 })
 
-export default connect(null,)(App);
+export default connect(null,mapDispatcToProps)(App);

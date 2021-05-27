@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Homepage from './pages/HomePage/homepage.component'
+
 import {Switch ,Route,Redirect} from 'react-router-dom'
 import ShopPage from './pages/shop/shop.component'
 import Header from './components/header/header.component'
@@ -11,6 +11,7 @@ import {setCurrentUser} from  './redux/user/user.action'
 import {selectCurrentUser} from './redux/user/user.selectors'
 import {createStructuredSelector} from 'reselect'
 import CheckoutPage from './pages/checkout/checkout.component'
+import Homepage from './pages/HomePage/homepage.component'
 
 
 class App extends React.Component {
